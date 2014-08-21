@@ -1,17 +1,17 @@
-def time()
-	def hours(years)
+def time
+	def hours years
 		years * 52 * 7 * 24
 	end
 
-	def minutes(decades)
+	def minutes decades
 		decades * 10 * 52 * 7 * 24 * 60
 	end
 
-	def seconds(years_old)
+	def seconds years_old
 		years_old * 52 * 7 * 24 * 60 * 60
 	end
 
-	def seconds_old(seconds)
+	def seconds_old seconds
 		seconds / 60 / 60 / 24 / 7 / 52
 	end
 
@@ -22,7 +22,7 @@ def time()
 end
 
 
-def name()
+def name
 	puts "Hello there, and what's your name?"
 	first_name = gets.chomp
 	puts "Sorry, I meant your last name."
@@ -41,13 +41,13 @@ def name()
 end
 
 
-def angry_boss()
+def angry_boss
 	puts "What do you want you slacker!?"
 	want = gets.chomp.upcase
 	puts "WHADDYA MEAN \"#{want}\"?!? YOU'RE FIRED!!"
 end
 
-def contents_page()
+def contents_page
 	lineWidth = 50
 	puts "Table of Contents".center(lineWidth)
 	puts ""
@@ -56,7 +56,7 @@ def contents_page()
 	puts "Chapter 3:  Variables".ljust(lineWidth/2) + "page 118".rjust(lineWidth/2)
 end
 
-def bottles_of_beer()
+def bottles_of_beer
 	beer = 99
 	while beer > 0
 		puts "#{beer} bottles of beer on the wall."
@@ -68,7 +68,7 @@ def bottles_of_beer()
 	end
 end
 
-def deaf_grandma()
+def deaf_grandma
 	puts "Hello, deary."
 	words = gets.chomp
 	while (words != "BYE")
@@ -82,7 +82,7 @@ def deaf_grandma()
 	end
 end
 
-def sort_array()
+def sort_array
 	words = []
 	while (words.last != "")
 		words.push gets.chomp
@@ -92,7 +92,7 @@ def sort_array()
 	puts words.sort
 end
 
-def table_of_contents()
+def table_of_contents
 	info = [['1', 'Numbers', '1'], ['2', 'Letters', '72'], ['3', 'Variables', '118']]
 	lineWidth = 50
 
@@ -103,5 +103,116 @@ def table_of_contents()
 	end
 end		
 
+def billion_seconds 
+	time = Time.mktime(1990, 6, 30, 11, 24, 32)
+	puts time
+	million_time = time + 1000000000000
+	puts million_time
+end
 
-table_of_contents
+def happy_birthday
+	puts "What year were you born?"
+	year = gets.chomp
+	puts "What month?"
+	month = gets.chomp
+	puts "And what day? Date not Saturday or anything, you ninny."
+	day = gets.chomp
+	time = Time.mktime(year, month, day)
+	years_old = (Time.new - time) / 60 / 60 / 24 / 7 / 52
+	years_old.to_i.times do
+		puts "SPANK!"
+	end
+	puts "Hahahahahaha!"
+end
+
+class Die
+	def initialize
+    roll
+  end
+  
+  def roll
+    @numberShowing = 1 + rand(6)
+  end
+  
+  def showing
+    @numberShowing
+  end
+
+  def cheat number
+  	if number < 1 or number > 6
+  		puts "No."
+  	else
+  		@numberShowing = number
+  	end
+  end
+
+end
+
+=begin
+die = Die.new
+puts die.showing
+die.cheat 4
+puts die.showing
+die.cheat 7
+puts die.roll
+puts die.showing
+=end
+
+class OrangeTree
+
+	def initialize
+		@height = 0
+		@age = 0
+		@orange_count = 0
+	end
+
+	def height
+		puts height
+	end
+
+	def oneYearPasses
+		if @age == 12
+			"Your tree has died."
+			exit
+		elsif @age > 5 and @age < 12
+			@orange_count = @age * 5
+		else 
+			puts "One day your tree will be big."
+		end
+		@age += 1
+		@height += 20
+		puts "Your tree is now " + @age.to_s + " years old."
+		puts "Your tree is now " + @height.to_s + "cm tall."
+	end
+
+	def countTheOranges
+		puts "There are " + @orange_count.to_s + " oranges on the tree."
+	end
+
+	def pickAnOrange
+		if @orange_count > 0
+			@orange_count -= 1
+			puts "That orange was delicious. Yum."
+		else 
+			puts "There are no more oranges this year."
+		end
+	end
+end
+
+orange = OrangeTree.new
+orange.oneYearPasses
+orange.oneYearPasses
+orange.oneYearPasses
+orange.oneYearPasses
+orange.oneYearPasses
+orange.oneYearPasses
+orange.oneYearPasses
+orange.pickAnOrange
+orange.pickAnOrange
+orange.pickAnOrange
+orange.pickAnOrange
+orange.pickAnOrange
+orange.pickAnOrange
+orange.pickAnOrange
+orange.oneYearPasses
+orange.countTheOranges
